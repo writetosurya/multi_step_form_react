@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, {
+    Component
+} from 'react'
 import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
@@ -19,14 +21,18 @@ export class UserForm extends Component {
 
     //  Proceed to Next Step
     nextStep = () => {
-        const { step } = this.state
+        const {
+            step
+        } = this.state
         this.setState({
             step: step + 1
         })
     }
     //  Proceed to Back Step
     prevStep = () => {
-        const { step } = this.state
+        const {
+            step
+        } = this.state
         this.setState({
             step: step - 1
         })
@@ -34,42 +40,75 @@ export class UserForm extends Component {
 
     // Hnadle fields Changes
     handleChange = input => e => {
-        this.setState({ [input]: e.target.value });
+        this.setState({
+            [input]: e.target.value
+        });
     }
 
     render() {
-        const { step } = this.state;
-        const { firstName, lastName, email, ocupation, bio } = this.state;
-        const values = { firstName, lastName, email, ocupation, bio };
+        const {
+            step
+        } = this.state;
+        const {
+            firstName,
+            lastName,
+            email,
+            ocupation,
+            bio
+        } = this.state;
+        const values = {
+            firstName,
+            lastName,
+            email,
+            ocupation,
+            bio
+        };
 
         switch (step) {
             case 1:
-                return (
-                    <FormUserDetails
-                        nextStep={this.nextStep}
-                        handleChange={this.handleChange}
-                        values={values}
+                return ( <
+                    FormUserDetails nextStep = {
+                        this.nextStep
+                    }
+                    handleChange = {
+                        this.handleChange
+                    }
+                    values = {
+                        values
+                    }
                     />
                 )
             case 2:
-                return (
-                    <FormPersonalDetails
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
+                return ( <
+                    FormPersonalDetails nextStep = {
+                        this.nextStep
+                    }
+                    prevStep = {
+                        this.prevStep
+                    }
+                    handleChange = {
+                        this.handleChange
+                    }
+                    values = {
+                        values
+                    }
                     />
                 )
             case 3:
-                return (
-                    <Confirm
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        values={values}
+                return ( <
+                    Confirm nextStep = {
+                        this.nextStep
+                    }
+                    prevStep = {
+                        this.prevStep
+                    }
+                    values = {
+                        values
+                    }
                     />
                 )
             case 4:
-                return <Success />
+                return <Success / >
         }
     }
 }
